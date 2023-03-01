@@ -1,6 +1,7 @@
 import * as dotenv from "dotenv";
 import express from "express";
 import { createClient } from "redis";
+import { router } from "./routes";
 
 const main = async () => {
   dotenv.config();
@@ -16,11 +17,7 @@ const main = async () => {
 
   app.use(express.json());
 
-  app.get("/", (_, res) => {
-    res.send({
-      message: "Hello World!",
-    });
-  });
+  app.use("/", router);
 
   app.listen(port, () => {
     console.log(`Listening on port ${port}`);

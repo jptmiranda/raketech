@@ -6,6 +6,10 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "baseUrl": "src",
-    "outDir": "dist"
-  }
+    "outDir": "dist",
+    "moduleResolution": "node",
+    "strict": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }
