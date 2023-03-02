@@ -6,10 +6,12 @@ import mediaService from "../services/mediaService";
 const searchMediaQuerySchema = z.object({
   title: z.string(),
   type: z.enum(["movie", "series", "episode"]).optional(),
-  year: z.preprocess(Number, z.number().optional()),
+  year: z
+    .preprocess((a) => parseInt(z.string().parse(a)), z.number())
+    .optional(),
 });
 
-export const searchMedia = async (req: Request, resp: Response) => {
+const searchMedia = async (req: Request, resp: Response) => {
   try {
     const queryParams: SearchMediaRequest = searchMediaQuerySchema.parse(
       req.query
@@ -31,4 +33,8 @@ export const searchMedia = async (req: Request, resp: Response) => {
       error: e.message,
     });
   }
+};
+
+export default {
+  searchMedia,
 };
