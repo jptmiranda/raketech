@@ -4,10 +4,13 @@ import { z } from "zod";
 import mediaService from "../services/mediaService";
 
 const searchMediaQuerySchema = z.object({
-  title: z.string(),
+  title: z.string().optional(),
   type: z.enum(["movie", "series", "episode"]).optional(),
   year: z
-    .preprocess((a) => parseInt(z.string().parse(a)), z.number())
+    .preprocess((y) => parseInt(z.string().parse(y)), z.number())
+    .optional(),
+  page: z
+    .preprocess((p) => parseInt(z.string().parse(p)), z.number())
     .optional(),
 });
 

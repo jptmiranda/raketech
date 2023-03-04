@@ -5,12 +5,17 @@ import { SearchMediaRequest } from "../types";
 const buildUrl = (params: SearchMediaRequest) => {
   const url = new URL("http://www.omdbapi.com");
 
-  url.searchParams.append("s", params.title);
+  if (params.title) {
+    url.searchParams.append("s", params.title);
+  }
   if (params.type) {
     url.searchParams.append("type", params.type);
   }
   if (params.year) {
     url.searchParams.append("y", params.year.toString());
+  }
+  if (params.page) {
+    url.searchParams.append("page", params.page.toString());
   }
   url.searchParams.append("apikey", process.env.OMDB_API_KEY);
 

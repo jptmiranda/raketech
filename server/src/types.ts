@@ -7,7 +7,8 @@ declare global {
 }
 
 export type SearchMediaRequest = {
-  title: string;
+  title?: string;
   type?: string;
   year?: number;
+  page?: number;
 };
