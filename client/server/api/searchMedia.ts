@@ -6,7 +6,7 @@ const buildUrl = (query: QueryObject) => {
     .map(([k, v]) => `${k}=${v}`)
     .join("&");
 
-  return `${process.env.API_URL}?${queryParams}`;
+  return `${process.env.API_URL || "http://localhost:8080"}?${queryParams}`;
 };
 
 export default eventHandler(async (event) => {

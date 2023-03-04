@@ -1,0 +1,33 @@
+FROM node:18-alpine
+
+# Create app directory
+WORKDIR /app
+
+# Install dependencies
+COPY package*.json ./
+RUN npm install --no-cache
+
+# Copy app files
+COPY . .
+
+# Build the application for production
+RUN npm run build
+
+# Remove unnecessary files
+RUN rm -rf \
+  node_modules/ \
+  .nuxt/ \
+  layouts/ \
+  pages/ \
+  public/ \
+  server/ \
+  .env \
+  .npmrc \
+  .gitignore \
+  nuxt.config.ts \
+  tsconfig.json \
+  package*.json
+
+EXPOSE 3000
+
+CMD ["node", ".output/server/index.mjs"]

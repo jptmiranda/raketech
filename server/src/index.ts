@@ -1,13 +1,12 @@
-import * as dotenv from "dotenv";
 import express from "express";
 import { createClient } from "redis";
 import { router } from "./routes";
 
-const redisClient = createClient();
+const redisClient = createClient({
+  url: `redis://${process.env.REDIS_URL || "localhost"}:6379`,
+});
 
 const main = async () => {
-  dotenv.config();
-
   redisClient.on("error", (error) => console.error(`Redis Error: ${error}`));
   await redisClient.connect();
 

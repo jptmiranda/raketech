@@ -35,7 +35,7 @@ const typeOptions = [
 </script>
 
 <template>
-  <h1 class="text-3xl font-bold text-center mt-4">Media Search</h1>
+  <h1 class="text-3xl font-bold text-center mt-4">Media Search - Raketech</h1>
 
   <div class="flex gap-4 mt-4">
     <input
