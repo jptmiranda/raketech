@@ -14,4 +14,4 @@ Install both dependencies in the server and client folders and run the dev scrip
 
 Inside the .env file in the root folder replace the "INSERT_OMDB_API_KEY_HERE" with the OMDB Api key
 
-Run the command `docker composer up --build -d`
+Run the command `docker compose up --build -d`
